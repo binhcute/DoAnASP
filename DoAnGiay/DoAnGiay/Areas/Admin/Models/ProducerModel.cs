@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace DoAnGiay.Areas.Admin.Models
+{
+    public class ProducerModel
+    {
+        [Key]
+        public int IdPro { get; set; }
+        [Display(Name = "Tên loại nhà sản xuất")]
+        [StringLength(100, MinimumLength = 5)]
+        [Required]
+        [Column(TypeName = "nvarchar(100)")]
+        public string Name { get; set; }
+        public string Infor { get; set; }
+        public ICollection<ShoeModel> Shoes { get; set; }
+    }
+}
