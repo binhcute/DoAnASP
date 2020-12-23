@@ -29,19 +29,33 @@ namespace DoAnGiay.Areas.Admin.Models
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
-
-        public int Size { get; set; }
-
+        [ForeignKey("Size")]
+        public int Sizes { get; set; }
+        public virtual SizeModel Size { get; set; }
         [ForeignKey("Color")]
-        public int Color { get; set; }
-        public virtual ColorModel color { get; set; }
+        public int Colors { get; set; }
+        public virtual ColorModel Color { get; set; }
+        [StringLength(255)]
+        [Column(TypeName = "nvarchar(255)")]
+        public string Video { get; set; }
+        [Display(Name = "Serial Number")]
+        [Required]
+        [StringLength(20)]
+        [Column(TypeName = "nvarchar(20)")]
+        public string NumberSeri { get; set; }
+        public bool Shoelate { get; set; }
+        public bool Version { get; set; }
+
+        [ForeignKey("Material")]
+        public int Materials { get; set; }
+        public virtual MaterialModel Material { get; set; }
 
         [ForeignKey("TypeShoe")]
-        public int IdType { get; set; }
+        public int Type { get; set; }
         public virtual TypeShoeModel TypeShoe { get; set; }
 
         [ForeignKey("Producer")]
-        public int IdPro { get; set; }
+        public int Pro { get; set; }
         public virtual ProducerModel Producer { get; set; }
 
         public string Description { get; set; }

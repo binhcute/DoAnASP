@@ -11,7 +11,12 @@ namespace DoAnGiay.Areas.Admin.Models
     {
         [Key]
         public int IdComment { get; set; }
+        [Required]
+        [StringLength(maximumLength: 300, ErrorMessage = "Độ không phù hợp!", MinimumLength = 16)]
+        [Display(Name = "Title")]
         public string Title { get; set; }
+        [Required]
+        [Display(Name = "Content")]
         public string Content { get; set; }
         public int IdShoe { get; set; }
         [ForeignKey("IdShoe")]

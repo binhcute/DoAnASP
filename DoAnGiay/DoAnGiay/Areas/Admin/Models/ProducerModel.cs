@@ -11,8 +11,8 @@ namespace DoAnGiay.Areas.Admin.Models
     {
         [Key]
         public int IdPro { get; set; }
-        [Display(Name = "Tên loại nhà sản xuất")]
-        [StringLength(100, MinimumLength = 5)]
+        [Display(Name = "Tên nhà sản xuất")]
+        [StringLength(100, MinimumLength = 1)]
         [Required]
         [Column(TypeName = "nvarchar(100)")]
         public string Name { get; set; }

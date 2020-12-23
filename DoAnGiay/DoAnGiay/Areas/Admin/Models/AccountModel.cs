@@ -21,7 +21,8 @@ namespace DoAnGiay.Areas.Admin.Models
         [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
         public int IdRoles { get; set; }
-        [ForeignKey("IdRoles")]
+        [ForeignKey("Roles")]
+        public bool Status { get; set; }
         public ICollection<AdminModel> Admins { get; set; }
         public ICollection<UserModel> Users { get; set; }
 
