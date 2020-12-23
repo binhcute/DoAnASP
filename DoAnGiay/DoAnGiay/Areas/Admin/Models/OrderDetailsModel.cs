@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace DoAnGiay.Areas.Admin.Models
 {
-    public class OrderDetails
+    public class OrderDetailsModel
     {
         [Key]
+        public int Id { get; set; }
         public int IdOrder { get; set; }
-        [Key]
         public int IdShoe { get; set; }
         public int Count { get; set; }
         [DataType(DataType.Currency)]
