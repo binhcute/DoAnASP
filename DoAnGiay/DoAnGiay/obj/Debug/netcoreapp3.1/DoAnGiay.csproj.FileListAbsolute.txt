@@ -487,3 +487,8 @@ D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\DoAnGia
 D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\DoAnGiay.pdb
 D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\DoAnGiay.genruntimeconfig.cache
 D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_PartialSidebar.cshtml.g.cs
+D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PartialFooter.cshtml.g.cs
+D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PartialHeader.cshtml.g.cs
+D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PartialHead.cshtml.g.cs
+D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs
+D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Views\Register\Index.cshtml.g.cs
