@@ -1,0 +1,156 @@
+﻿<div id="sidebar" class="sidebar responsive ace-save-state">
+    <script type="text/javascript">
+            try { ace.settings.loadState('sidebar') } catch (e) { }
+    </script>
+
+    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+            <button class="btn btn-success">
+                <i class="ace-icon fa fa-signal"></i>
+            </button>
+
+            <button class="btn btn-info">
+                <i class="ace-icon fa fa-pencil"></i>
+            </button>
+
+            <button class="btn btn-warning">
+                <i class="ace-icon fa fa-users"></i>
+            </button>
+
+            <button class="btn btn-danger">
+                <i class="ace-icon fa fa-cogs"></i>
+            </button>
+        </div>
+
+        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+            <span class="btn btn-success"></span>
+
+            <span class="btn btn-info"></span>
+
+            <span class="btn btn-warning"></span>
+
+            <span class="btn btn-danger"></span>
+        </div>
+    </div><!-- /.sidebar-shortcuts -->
+
+    <ul class="nav nav-list">
+        <li class="active">
+            <a asp-action="Index" asp-controller="Home">
+                <i class="menu-icon fa fa-home"></i>
+                <span class="menu-text"> Trang Chủ </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-th-list"></i>
+                <span class="menu-text"> Giày </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="">
+                    <a asp-action="Index" asp-controller="TypeShoe">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Loại Giày
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a asp-action="Index" asp-controller="Shoe">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Giày
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a asp-action="Index" asp-controller="Size">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Size
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a asp-action="Index" asp-controller="Color">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Màu
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a asp-action="Index" asp-controller="Material">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Chất Liệu
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+
+            </ul>
+        </li>
+
+        <li class="">
+            <a asp-action="Index" asp-controller="Comment">
+                <i class="menu-icon fa fa-comments"></i>
+                <span class="menu-text"> Bình Luận </span>
+
+            </a>
+
+            <b class="arrow"></b>
+
+        </li>
+        <li class="">
+            <a asp-action="Index" asp-controller="Order">
+                <i class="menu-icon fa fa-calendar-check-o"></i>
+                <span class="menu-text"> Đơn Hàng </span>
+
+            </a>
+
+            <b class="arrow"></b>
+
+        </li>
+        <li class="">
+            <a asp-action="Index" asp-controller="User">
+                <i class="menu-icon fa fa-users"></i>
+                <span class="menu-text"> Thông Tin Tài Khoản </span>
+
+            </a>
+
+            <b class="arrow"></b>
+
+        </li>
+        
+        <li class="">
+            <a asp-action="Index" asp-controller="Producer">
+                <i class="menu-icon fa fa-truck"></i>
+
+                <span class="menu-text">
+                    Nhà Cung Cấp
+
+                </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+
+
+    </ul><!-- /.nav-list -->
+
+    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+        <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+    </div>
+</div>
+
