@@ -57,7 +57,7 @@ namespace DoAnGiay
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "area",
-                    pattern: "{area=Admin}/{controller=Shoe}/{action=Index}/{id?}");
+                    pattern: "{area=Admin}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
