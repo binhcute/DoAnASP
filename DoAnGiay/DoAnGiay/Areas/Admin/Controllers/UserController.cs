@@ -23,7 +23,8 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // GET: Admin/User
         public async Task<IActionResult> Index()
         {
-            return View(await _context.User.ToListAsync());
+            var dPContext = _context.User.Include(u => u.Account);
+            return View(await dPContext.ToListAsync());
         }
 
         // GET: Admin/User/Details/5
@@ -35,6 +36,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             }
 
             var userModel = await _context.User
+                .Include(u => u.Account)
                 .FirstOrDefaultAsync(m => m.IdUser == id);
             if (userModel == null)
             {
@@ -47,6 +49,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // GET: Admin/User/Create
         public IActionResult Create()
         {
+            ViewData["IdAccount"] = new SelectList(_context.Account, "IdAccount", "AccountName");
             return View();
         }
 
@@ -55,7 +58,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUser,FullName,Email,Address,Phone")] UserModel userModel)
+        public async Task<IActionResult> Create([Bind("IdUser,FullName,Email,Address,Phone,IdAccount")] UserModel userModel)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +66,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdAccount"] = new SelectList(_context.Account, "IdAccount", "AccountName", userModel.IdAccount);
             return View(userModel);
         }
 
@@ -79,6 +83,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewData["IdAccount"] = new SelectList(_context.Account, "IdAccount", "AccountName", userModel.IdAccount);
             return View(userModel);
         }
 
@@ -87,7 +92,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUser,FullName,Email,Address,Phone")] UserModel userModel)
+        public async Task<IActionResult> Edit(int id, [Bind("IdUser,FullName,Email,Address,Phone,IdAccount")] UserModel userModel)
         {
             if (id != userModel.IdUser)
             {
@@ -114,6 +119,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdAccount"] = new SelectList(_context.Account, "IdAccount", "AccountName", userModel.IdAccount);
             return View(userModel);
         }
 
@@ -126,6 +132,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             }
 
             var userModel = await _context.User
+                .Include(u => u.Account)
                 .FirstOrDefaultAsync(m => m.IdUser == id);
             if (userModel == null)
             {

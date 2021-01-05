@@ -98,18 +98,17 @@ namespace DoAnGiay.Migrations
                     AccountName = table.Column<string>(maxLength: 200, nullable: false),
                     Password = table.Column<string>(maxLength: 200, nullable: true),
                     IdRoles = table.Column<int>(nullable: false),
-                    Status = table.Column<bool>(nullable: false),
-                    RolesModelIdRoles = table.Column<int>(nullable: true)
+                    Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Account", x => x.IdAccount);
                     table.ForeignKey(
-                        name: "FK_Account_Roles_RolesModelIdRoles",
-                        column: x => x.RolesModelIdRoles,
+                        name: "FK_Account_Roles_IdRoles",
+                        column: x => x.IdRoles,
                         principalTable: "Roles",
                         principalColumn: "IdRoles",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -179,17 +178,17 @@ namespace DoAnGiay.Migrations
                     Email = table.Column<string>(maxLength: 300, nullable: true),
                     Address = table.Column<string>(maxLength: 300, nullable: false),
                     Phone = table.Column<string>(maxLength: 10, nullable: false),
-                    AccountIdAccount = table.Column<int>(nullable: true)
+                    IdAccount = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Admin", x => x.IdAdmin);
                     table.ForeignKey(
-                        name: "FK_Admin_Account_AccountIdAccount",
-                        column: x => x.AccountIdAccount,
+                        name: "FK_Admin_Account_IdAccount",
+                        column: x => x.IdAccount,
                         principalTable: "Account",
                         principalColumn: "IdAccount",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -202,17 +201,17 @@ namespace DoAnGiay.Migrations
                     Email = table.Column<string>(maxLength: 300, nullable: true),
                     Address = table.Column<string>(maxLength: 300, nullable: false),
                     Phone = table.Column<string>(maxLength: 10, nullable: false),
-                    AccountIdAccount = table.Column<int>(nullable: true)
+                    IdAccount = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.IdUser);
                     table.ForeignKey(
-                        name: "FK_User_Account_AccountIdAccount",
-                        column: x => x.AccountIdAccount,
+                        name: "FK_User_Account_IdAccount",
+                        column: x => x.IdAccount,
                         principalTable: "Account",
                         principalColumn: "IdAccount",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -248,18 +247,17 @@ namespace DoAnGiay.Migrations
                     Address = table.Column<string>(maxLength: 300, nullable: false),
                     Phone = table.Column<string>(maxLength: 10, nullable: false),
                     Date = table.Column<string>(nullable: true),
-                    Status = table.Column<bool>(nullable: false),
-                    UserIdUser = table.Column<int>(nullable: true)
+                    Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Order", x => x.IdOrder);
                     table.ForeignKey(
-                        name: "FK_Order_User_UserIdUser",
-                        column: x => x.UserIdUser,
+                        name: "FK_Order_User_IdUser",
+                        column: x => x.IdUser,
                         principalTable: "User",
                         principalColumn: "IdUser",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -294,14 +292,14 @@ namespace DoAnGiay.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Account_RolesModelIdRoles",
+                name: "IX_Account_IdRoles",
                 table: "Account",
-                column: "RolesModelIdRoles");
+                column: "IdRoles");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Admin_AccountIdAccount",
+                name: "IX_Admin_IdAccount",
                 table: "Admin",
-                column: "AccountIdAccount");
+                column: "IdAccount");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_IdShoe",
@@ -309,9 +307,9 @@ namespace DoAnGiay.Migrations
                 column: "IdShoe");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_UserIdUser",
+                name: "IX_Order_IdUser",
                 table: "Order",
-                column: "UserIdUser");
+                column: "IdUser");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetail_OrderIdOrder",
@@ -349,9 +347,9 @@ namespace DoAnGiay.Migrations
                 column: "Type");
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_AccountIdAccount",
+                name: "IX_User_IdAccount",
                 table: "User",
-                column: "AccountIdAccount");
+                column: "IdAccount");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
