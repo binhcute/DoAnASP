@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoAnGiay.Migrations
 {
     [DbContext(typeof(DPContext))]
-    [Migration("20201222152056_InitialCreate")]
+    [Migration("20210105155649_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,15 +40,12 @@ namespace DoAnGiay.Migrations
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
-                    b.Property<int?>("RolesModelIdRoles")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
                     b.HasKey("IdAccount");
 
-                    b.HasIndex("RolesModelIdRoles");
+                    b.HasIndex("IdRoles");
 
                     b.ToTable("Account");
                 });
@@ -59,9 +56,6 @@ namespace DoAnGiay.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AccountIdAccount")
-                        .HasColumnType("int");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -77,6 +71,9 @@ namespace DoAnGiay.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<int>("IdAccount")
+                        .HasColumnType("int");
+
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(10)")
@@ -84,7 +81,7 @@ namespace DoAnGiay.Migrations
 
                     b.HasKey("IdAdmin");
 
-                    b.HasIndex("AccountIdAccount");
+                    b.HasIndex("IdAccount");
 
                     b.ToTable("Admin");
                 });
@@ -221,9 +218,6 @@ namespace DoAnGiay.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("UserIdUser")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
@@ -231,7 +225,7 @@ namespace DoAnGiay.Migrations
 
                     b.HasKey("IdOrder");
 
-                    b.HasIndex("UserIdUser");
+                    b.HasIndex("IdUser");
 
                     b.ToTable("Order");
                 });
@@ -387,9 +381,6 @@ namespace DoAnGiay.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AccountIdAccount")
-                        .HasColumnType("int");
-
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(300)")
@@ -404,6 +395,9 @@ namespace DoAnGiay.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<int>("IdAccount")
+                        .HasColumnType("int");
+
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(10)")
@@ -411,23 +405,27 @@ namespace DoAnGiay.Migrations
 
                     b.HasKey("IdUser");
 
-                    b.HasIndex("AccountIdAccount");
+                    b.HasIndex("IdAccount");
 
                     b.ToTable("User");
                 });
 
             modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.AccountModel", b =>
                 {
-                    b.HasOne("DoAnGiay.Areas.Admin.Models.RolesModel", null)
+                    b.HasOne("DoAnGiay.Areas.Admin.Models.RolesModel", "Roles")
                         .WithMany("Accounts")
-                        .HasForeignKey("RolesModelIdRoles");
+                        .HasForeignKey("IdRoles")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.AdminModel", b =>
                 {
                     b.HasOne("DoAnGiay.Areas.Admin.Models.AccountModel", "Account")
                         .WithMany("Admins")
-                        .HasForeignKey("AccountIdAccount");
+                        .HasForeignKey("IdAccount")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.CommentModel", b =>
@@ -453,8 +451,10 @@ namespace DoAnGiay.Migrations
             modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.OrderModel", b =>
                 {
                     b.HasOne("DoAnGiay.Areas.Admin.Models.UserModel", "User")
-                        .WithMany()
-                        .HasForeignKey("UserIdUser");
+                        .WithMany("Orders")
+                        .HasForeignKey("IdUser")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.ShoeModel", b =>
@@ -494,7 +494,9 @@ namespace DoAnGiay.Migrations
                 {
                     b.HasOne("DoAnGiay.Areas.Admin.Models.AccountModel", "Account")
                         .WithMany("Users")
-                        .HasForeignKey("AccountIdAccount");
+                        .HasForeignKey("IdAccount")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

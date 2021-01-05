@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,7 +11,9 @@ namespace DoAnGiay.Areas.Admin.Models
     {
         [Key]
         public int IdOrder { get; set; }
+        [ForeignKey("User")]
         public int IdUser { get; set; }
+        
         [Required(ErrorMessage = "Không Được Bỏ Trống")]
         [StringLength(maximumLength: 50, ErrorMessage = "Độ dài từ 8 ký tự trở lên", MinimumLength = 8)]
         [Display(Name = "Họ Và Tên")]

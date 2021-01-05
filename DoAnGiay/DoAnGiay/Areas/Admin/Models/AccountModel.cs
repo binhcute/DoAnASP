@@ -20,9 +20,12 @@ namespace DoAnGiay.Areas.Admin.Models
         [StringLength(maximumLength: 200, ErrorMessage = "Độ dài không phù hợp", MinimumLength = 8)]
         [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
-        public int IdRoles { get; set; }
+
         [ForeignKey("Roles")]
+        public int IdRoles { get; set; }
+        
         public bool Status { get; set; }
+        public virtual RolesModel Roles { get; set; }
         public ICollection<AdminModel> Admins { get; set; }
         public ICollection<UserModel> Users { get; set; }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,6 +31,9 @@ namespace DoAnGiay.Areas.Admin.Models
         [DataType(DataType.PhoneNumber)]
         [StringLength(maximumLength: 10, ErrorMessage = "Độ dài không phù hợp", MinimumLength = 10)]
         public string Phone { get; set; }
+        [ForeignKey("Account")]
+        public int IdAccount { get; set; }
+        
         public virtual AccountModel Account { get; set; }
     }
 }

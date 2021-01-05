@@ -23,7 +23,8 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // GET: Admin/Account
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Account.ToListAsync());
+            var dPContext = _context.Account.Include(a => a.Roles);
+            return View(await dPContext.ToListAsync());
         }
 
         // GET: Admin/Account/Details/5
@@ -35,6 +36,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             }
 
             var accountModel = await _context.Account
+                .Include(a => a.Roles)
                 .FirstOrDefaultAsync(m => m.IdAccount == id);
             if (accountModel == null)
             {
@@ -47,6 +49,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // GET: Admin/Account/Create
         public IActionResult Create()
         {
+            ViewData["IdRoles"] = new SelectList(_context.Roles, "IdRoles", "Name");
             return View();
         }
 
@@ -63,6 +66,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdRoles"] = new SelectList(_context.Roles, "IdRoles", "Name", accountModel.IdRoles);
             return View(accountModel);
         }
 
@@ -79,6 +83,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewData["IdRoles"] = new SelectList(_context.Roles, "IdRoles", "Name", accountModel.IdRoles);
             return View(accountModel);
         }
 
@@ -114,6 +119,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdRoles"] = new SelectList(_context.Roles, "IdRoles", "Name", accountModel.IdRoles);
             return View(accountModel);
         }
 
@@ -126,6 +132,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             }
 
             var accountModel = await _context.Account
+                .Include(a => a.Roles)
                 .FirstOrDefaultAsync(m => m.IdAccount == id);
             if (accountModel == null)
             {

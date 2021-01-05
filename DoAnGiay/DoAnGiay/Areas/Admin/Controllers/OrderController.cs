@@ -23,7 +23,8 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // GET: Admin/Order
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Order.ToListAsync());
+            var dPContext = _context.Order.Include(o => o.User);
+            return View(await dPContext.ToListAsync());
         }
 
         // GET: Admin/Order/Details/5
@@ -35,6 +36,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             }
 
             var orderModel = await _context.Order
+                .Include(o => o.User)
                 .FirstOrDefaultAsync(m => m.IdOrder == id);
             if (orderModel == null)
             {
@@ -47,6 +49,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // GET: Admin/Order/Create
         public IActionResult Create()
         {
+            ViewData["IdUser"] = new SelectList(_context.User, "IdUser", "Address");
             return View();
         }
 
@@ -63,6 +66,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdUser"] = new SelectList(_context.User, "IdUser", "Address", orderModel.IdUser);
             return View(orderModel);
         }
 
@@ -79,6 +83,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewData["IdUser"] = new SelectList(_context.User, "IdUser", "Address", orderModel.IdUser);
             return View(orderModel);
         }
 
@@ -114,6 +119,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdUser"] = new SelectList(_context.User, "IdUser", "Address", orderModel.IdUser);
             return View(orderModel);
         }
 
@@ -126,6 +132,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             }
 
             var orderModel = await _context.Order
+                .Include(o => o.User)
                 .FirstOrDefaultAsync(m => m.IdOrder == id);
             if (orderModel == null)
             {
