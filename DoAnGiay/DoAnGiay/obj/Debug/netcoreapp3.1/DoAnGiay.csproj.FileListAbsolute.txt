@@ -504,3 +504,4 @@ C:\D\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\U
 C:\D\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Details.cshtml.g.cs
 C:\D\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Edit.cshtml.g.cs
 C:\D\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs
+C:\D\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_PartialMenu.cshtml.g.cs
