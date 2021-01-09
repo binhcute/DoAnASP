@@ -4,38 +4,72 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table id="simple-table" class="table  table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="center">
+                                            <label class="pos-rel">
+                                                <input type="checkbox" class="ace" />
+                                                <span class="lbl"></span>
+                                            </label>
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </th>
+                                        <th class="hidden-480">
+                                            @Html.DisplayNameFor(model => model.Status)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdColor">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdColor">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdColor">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="center">
+                                                <label class="pos-rel">
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+                                            <td class="hidden-480">
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </td>
+
+                                            <td>
+
+                                                <a asp-action="Details" asp-route-id="@item.IdColor" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
+                                                        <i class="ace-icon fa fa-check bigger-120"></i>
+                                                </a>
+                                                <a asp-action="Edit" asp-route-id="@item.IdColor" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
+                                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                </a>
+
+                                                <a asp-action="Delete" asp-route-id="@item.IdColor"  class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
+                                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                </a>
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <p>
+                                <a asp-action="Create" class="btn btn-success"> Create New </a>
+                            </p>
+                        </div><!-- /.span -->
+                    </div><!-- /.row -->
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
