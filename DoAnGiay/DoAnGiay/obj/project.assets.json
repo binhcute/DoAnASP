@@ -9166,23 +9166,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\AnhNguyen\\.nuget\\packages\\": {},
+    "C:\\Users\\Rapper B-Eight\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\D\\DoAnAsp\\DoAnGiay\\DoAnGiay\\DoAnGiay.csproj",
+      "projectUniqueName": "D:\\DoAnHK5\\ASP.NetCore\\DoAnAsp\\DoAnGiay\\DoAnGiay\\DoAnGiay.csproj",
       "projectName": "DoAnGiay",
-      "projectPath": "C:\\D\\DoAnAsp\\DoAnGiay\\DoAnGiay\\DoAnGiay.csproj",
-      "packagesPath": "C:\\Users\\AnhNguyen\\.nuget\\packages\\",
-      "outputPath": "C:\\D\\DoAnAsp\\DoAnGiay\\DoAnGiay\\obj\\",
+      "projectPath": "D:\\DoAnHK5\\ASP.NetCore\\DoAnAsp\\DoAnGiay\\DoAnGiay\\DoAnGiay.csproj",
+      "packagesPath": "C:\\Users\\Rapper B-Eight\\.nuget\\packages\\",
+      "outputPath": "D:\\DoAnHK5\\ASP.NetCore\\DoAnAsp\\DoAnGiay\\DoAnGiay\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\AnhNguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Rapper B-Eight\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],

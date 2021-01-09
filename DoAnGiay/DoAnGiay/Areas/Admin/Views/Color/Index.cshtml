@@ -47,29 +47,38 @@
 
                                             <td>
 
-                                                <a asp-action="Details" asp-route-id="@item.IdColor" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
-                                                        <i class="ace-icon fa fa-check bigger-120"></i>
+                                                @*<a asp-action="Details" asp-route-id="@item.IdColor" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
+            <i class="ace-icon fa fa-folder-open bigger-120"></i>
+        </a>*@
+                                                <a onclick="showModal('@Url.Action("Details","Color",new { id = $"{item.IdColor}" },Context.Request.Scheme)','Chi tiết màu')" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
+                                                    <i class="ace-icon fa fa-folder-open bigger-120"></i>
                                                 </a>
-                                                <a asp-action="Edit" asp-route-id="@item.IdColor" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
-                                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                @*<a asp-action="Edit" asp-route-id="@item.IdColor" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
+            <i class="ace-icon fa fa-pencil bigger-120"></i>
+        </a>*@
+                                                <a onclick="showModal('@Url.Action("Edit","Color",new { id = $"{item.IdColor}" },Context.Request.Scheme)','Chỉnh sửa màu')" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
+                                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
                                                 </a>
-
-                                                <a asp-action="Delete" asp-route-id="@item.IdColor"  class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
-                                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                               @* <a asp-action="Delete" asp-route-id="@item.IdColor" class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
+                                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                </a>*@
+                                                <a onclick="showModal('@Url.Action("Delete","Color",new { id = $"{item.IdColor}" },Context.Request.Scheme)','Xóa màu')" class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
+                                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                                 </a>
-
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
                             <p>
-                                <a asp-action="Create" class="btn btn-success"> Create New </a>
+                                
+                                <a onclick="showModal('@Url.Action("Create","Color",null,Context.Request.Scheme)','Thêm Màu')" class="btn btn-success text-white">
+                                    Thêm màu
+                                </a>
                             </p>
                         </div><!-- /.span -->
                     </div><!-- /.row -->
                     <!-- PAGE CONTENT ENDS -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
-        </div><!-- /.page-content -->
-    </div>
+        

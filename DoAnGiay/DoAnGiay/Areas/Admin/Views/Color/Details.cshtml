@@ -2,61 +2,37 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = null;
 }
 
-<h1>Details</h1>
+@*<h1>Details</h1>
+<hr />*@
+<div class="row">
+    <div class="col-xs-12 col-sm-7">
+        <div class="space visible-xs"></div>
 
-<div class="col-xs-12 col-sm-7">
-    <div class="space visible-xs"></div>
+        <div class="profile-user-info profile-user-info-striped">
+            <div class="profile-info-row">
+                <div class="profile-info-name"> @Html.DisplayNameFor(model => model.Name) </div>
 
-    <div class="profile-user-info profile-user-info-striped">
-        <div class="profile-info-row">
-            <div class="profile-info-name"> Username </div>
-
-            <div class="profile-info-value">
-                <span>alexdoe</span>
+                <div class="profile-info-value">
+                    <span> @Html.DisplayFor(model => model.Name)</span>
+                </div>
             </div>
-        </div>
 
-        <div class="profile-info-row">
-            <div class="profile-info-name"> Location </div>
+            <div class="profile-info-row">
+                <div class="profile-info-name"> @Html.DisplayNameFor(model => model.Status) </div>
 
-            <div class="profile-info-value">
-                <i class="fa fa-map-marker light-orange bigger-110"></i>
-                <span>Netherlands, Amsterdam</span>
+                <div class="profile-info-value">
+                    <span>@Html.DisplayFor(model => model.Status)</span>
+                </div>
             </div>
-        </div>
 
-        <div class="profile-info-row">
-            <div class="profile-info-name"> Age </div>
 
-            <div class="profile-info-value">
-                <span>38</span>
-            </div>
-        </div>
-
-        <div class="profile-info-row">
-            <div class="profile-info-name"> Joined </div>
-
-            <div class="profile-info-value">
-                <span>2010/06/20</span>
-            </div>
-        </div>
-
-        <div class="profile-info-row">
-            <div class="profile-info-name"> Last Online </div>
-
-            <div class="profile-info-value">
-                <span>3 hours ago</span>
-            </div>
-        </div>
-
-        <div class="profile-info-row">
-            <div class="profile-info-name"> About Me </div>
-
-            <div class="profile-info-value">
-                <span>Bio</span>
-            </div>
         </div>
     </div>
+    </div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdColor">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>
