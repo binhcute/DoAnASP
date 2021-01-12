@@ -29,6 +29,7 @@
 <script src="~/admin/assets/js/ace-elements.min.js"></script>
 <script src="~/admin/assets/js/ace.min.js"></script>
 
+<script src="~/admin/assets/js/bootstrap-timepicker.min.js"></script>
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
     jQuery(function ($) {
@@ -58,6 +59,21 @@
                     barColor: barColor,
                     chartRangeMin: $(this).data('min') || 0
                 });
+        });
+
+        $('#timepicker1').timepicker({
+            minuteStep: 1,
+            showSeconds: true,
+            showMeridian: false,
+            disableFocus: true,
+            icons: {
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down'
+            }
+        }).on('focus', function () {
+            $('#timepicker1').timepicker('showWidget');
+        }).next().on(ace.click_event, function () {
+            $(this).prev().focus();
         });
 
 

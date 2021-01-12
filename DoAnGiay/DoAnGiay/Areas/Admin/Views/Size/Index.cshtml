@@ -4,32 +4,76 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <div class="row">
+            <div class="col-xs-12">
+                <table id="simple-table" class="table  table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="center">
+                                <label class="pos-rel">
+                                    <input type="checkbox" class="ace" />
+                                    <span class="lbl"></span>
+                                </label>
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NumSize)
+                            </th>
+                            
+                            <th></th>
+                        </tr>
+                    </thead>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NumSize)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumSize)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdSize">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdSize">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdSize">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="center">
+                                    <label class="pos-rel">
+                                        <input type="checkbox" class="ace" />
+                                        <span class="lbl"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumSize)
+                                </td>
+                                
+
+                                <td>
+
+                                    @*<a asp-action="Details" asp-route-id="@item.IdSize" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
+                                            <i class="ace-icon fa fa-folder-open bigger-120"></i>
+                                        </a>*@
+                                    <a onclick="showModal('@Url.Action("Details","Size",new { id = $"{item.IdSize}" },Context.Request.Scheme)','Chi tiết Size')" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
+                                        <i class="ace-icon fa fa-folder-open bigger-120"></i>
+                                    </a>
+                                    @*<a asp-action="Edit" asp-route-id="@item.IdSize" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
+                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                        </a>*@
+                                    <a onclick="showModal('@Url.Action("Edit","Size",new { id = $"{item.IdSize}" },Context.Request.Scheme)','Chỉnh sửa Size')" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
+                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                    </a>
+                                    @* <a asp-action="Delete" asp-route-id="@item.IdSize" class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </a>*@
+                                    <a onclick="showModal('@Url.Action("Delete","Size",new { id = $"{item.IdSize}" },Context.Request.Scheme)','Xóa Size')" class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
+                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <p>
+
+                    <a onclick="showModal('@Url.Action("Create","Size",null,Context.Request.Scheme)','Thêm Size')" class="btn btn-success text-white">
+                        Thêm Size
+                    </a>
+                </p>
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+        <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+</div><!-- /.row -->

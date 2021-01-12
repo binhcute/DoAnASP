@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DoAnGiay.Areas.Admin.Data;
 using DoAnGiay.Areas.Admin.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace DoAnGiay.Areas.Admin.Controllers
 {
@@ -66,14 +68,36 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdShoe,Name,Date,Img,Price,Sizes,Colors,Video,NumberSeri,Shoelate,Version,Materials,Type,Pro,Description,Status")] ShoeModel shoeModel)
+        public async Task<IActionResult> Create([Bind("IdShoe,Name,Date,Img,Price,Sizes,Colors,Video,NumberSeri,Shoelate,Version,Materials,Type,Pro,Description,Status")] ShoeModel shoeModel, IFormFile imageUpload)
         {
             if (ModelState.IsValid)
             {
+                shoeModel.Img = "avatar.png";
                 _context.Add(shoeModel);
+                await _context.SaveChangesAsync();
+                /* _context.Add(shoeModel);
+                 await _context.SaveChangesAsync();
+                 return RedirectToAction(nameof(Index));*/
+
+
+                var path = Path.Combine(
+                        Directory.GetCurrentDirectory(), "wwwroot/admin/assets/images/image",
+                        shoeModel.IdShoe + "." + imageUpload.FileName.Split(".")[imageUpload.FileName.Split(".").Length - 1]);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await imageUpload.CopyToAsync(stream);
+                }
+                shoeModel.Img = shoeModel.IdShoe + "." + imageUpload.FileName.Split(".")[imageUpload.FileName.Split(".").Length - 1];
+
+
+
+
+                _context.Update(shoeModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+        
+
             ViewData["Colors"] = new SelectList(_context.Color, "IdColor", "Name", shoeModel.Colors);
             ViewData["Materials"] = new SelectList(_context.MaterialModel, "IdMaterial", "Name", shoeModel.Materials);
             ViewData["Pro"] = new SelectList(_context.Producer, "IdPro", "Name", shoeModel.Pro);
@@ -108,7 +132,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdShoe,Name,Date,Img,Price,Sizes,Colors,Video,NumberSeri,Shoelate,Version,Materials,Type,Pro,Description,Status")] ShoeModel shoeModel)
+        public async Task<IActionResult> Edit(int id, [Bind("IdShoe,Name,Date,Img,Price,Sizes,Colors,Video,NumberSeri,Shoelate,Version,Materials,Type,Pro,Description,Status")] ShoeModel shoeModel, IFormFile imageUpload)
         {
             if (id != shoeModel.IdShoe)
             {
@@ -120,6 +144,25 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 try
                 {
                     _context.Update(shoeModel);
+                    if (imageUpload != null)
+                    {
+                        var path = Path.Combine(
+                    Directory.GetCurrentDirectory(), "wwwroot/admin/assets/images/image", shoeModel.Img);
+                        System.IO.File.Delete(path);
+
+                        path = Path.Combine(
+                            Directory.GetCurrentDirectory(), "wwwroot/admin/assets/images/image",
+                        shoeModel.IdShoe + "." + imageUpload.FileName.Split(".")[imageUpload.FileName.Split(".").Length - 1]);
+                        
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            await imageUpload.CopyToAsync(stream);
+                        }
+                        
+                        shoeModel.Img = shoeModel.IdShoe + "." + imageUpload.FileName.Split(".")[imageUpload.FileName.Split(".").Length - 1];
+                        _context.Update(shoeModel);
+                        await _context.SaveChangesAsync();
+                    }
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
