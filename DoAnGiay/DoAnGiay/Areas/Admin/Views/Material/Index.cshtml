@@ -4,38 +4,80 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <div class="row">
+            <div class="col-xs-12">
+                <table id="simple-table" class="table  table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="center">
+                                <label class="pos-rel">
+                                    <input type="checkbox" class="ace" />
+                                    <span class="lbl"></span>
+                                </label>
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th class="hidden-480">
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdMaterial">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdMaterial">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdMaterial">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="center">
+                                    <label class="pos-rel">
+                                        <input type="checkbox" class="ace" />
+                                        <span class="lbl"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td class="hidden-480">
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+
+                                <td>
+
+                                    @*<a asp-action="Details" asp-route-id="@item.IdMaterial" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
+                                            <i class="ace-icon fa fa-folder-open bigger-120"></i>
+                                        </a>*@
+                                    <a onclick="showModal('@Url.Action("Details","Material",new { id = $"{item.IdMaterial}" },Context.Request.Scheme)','Chi tiết chất liệu')" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
+                                        <i class="ace-icon fa fa-folder-open bigger-120"></i>
+                                    </a>
+                                    @*<a asp-action="Edit" asp-route-id="@item.IdMaterial" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
+                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                        </a>*@
+                                    <a onclick="showModal('@Url.Action("Edit","Material",new { id = $"{item.IdMaterial}" },Context.Request.Scheme)','Chỉnh sửa chất liệu')" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
+                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                    </a>
+                                    @* <a asp-action="Delete" asp-route-id="@item.IdMaterial" class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </a>*@
+                                    <a onclick="showModal('@Url.Action("Delete","Material",new { id = $"{item.IdMaterial}" },Context.Request.Scheme)','Xóa chất liệu')" class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
+                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <p>
+
+                    <a onclick="showModal('@Url.Action("Create","Material",null,Context.Request.Scheme)','Thêm Chất Liệu')" class="btn btn-success text-white">
+                        Thêm Chất Liệu
+                    </a>
+                </p>
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+        <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+</div><!-- /.row -->

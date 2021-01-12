@@ -4,116 +4,93 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Img)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Video)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberSeri)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Shoelate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Version)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Material)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TypeShoe)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Producer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Img)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Size.IdSize)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Video)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberSeri)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Shoelate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Version)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Material.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeShoe.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Producer.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdShoe">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdShoe">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdShoe">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <div class="row">
+            <div class="col-xs-12">
+                <table id="simple-table" class="table  table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="center">
+                                <label class="pos-rel">
+                                    <input type="checkbox" class="ace" />
+                                    <span class="lbl"></span>
+                                </label>
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th class="hidden-480">
+                                @Html.DisplayNameFor(model => model.Img)
+                            </th>
+                            <th class="hidden-480">
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+                            <th class="hidden-480">
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td class="center">
+                                <label class="pos-rel">
+                                    <input type="checkbox" class="ace" />
+                                    <span class="lbl"></span>
+                                </label>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td class="hidden-480">
+                                @Html.DisplayFor(modelItem => item.Img)
+                            </td>
+                            <td class="hidden-480">
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td class="hidden-480">
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+
+                                <a asp-action="Details" asp-route-id="@item.IdShoe" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
+                                    <i class="ace-icon fa fa-folder-open bigger-120"></i>
+                                </a>
+                                @*<a onclick="showModal('@Url.Action("Details","Producer",new { id = $"{item.IdPro}" },Context.Request.Scheme)','Chi tiết chất liệu')" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
+                <i class="ace-icon fa fa-folder-open bigger-120"></i>
+            </a>*@
+                                <a asp-action="Edit" asp-route-id="@item.IdShoe" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
+                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </a>
+                                @*<a onclick="showModal('@Url.Action("Edit","Producer",new { id = $"{item.IdPro}" },Context.Request.Scheme)','Chỉnh sửa thông tin nhà cung cấp')" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
+                <i class="ace-icon fa fa-pencil bigger-120"></i>
+            </a>*@
+                                <a asp-action="Delete" asp-route-id="@item.IdShoe" class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
+                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                </a>
+                                @*<a onclick="showModal('@Url.Action("Delete","Producer",new { id = $"{item.IdPro}" },Context.Request.Scheme)','Xóa thông tin nhà cung cấp')" class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
+                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+            </a>*@
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+                <p>
+                    <a asp-action="Create" class="btn btn-success text-white">Thêm Giày Mới</a>
+                    @*<a onclick="showModal('@Url.Action("Create","Producer",null,Context.Request.Scheme)','Thêm Thông Tin Nhà Cung Cấp')" class="btn btn-success text-white">
+            Thêm Thông Tin Nhà Cung Cấp
+        </a>*@
+                </p>
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+        <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
