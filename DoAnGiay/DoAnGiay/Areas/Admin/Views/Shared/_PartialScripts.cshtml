@@ -33,7 +33,7 @@
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
     jQuery(function ($) {
-        $('.easy-pie-chart.percentage').each(function () {
+        @*$('.easy-pie-chart.percentage').each(function () {
             var $box = $(this).closest('.infobox');
             var barColor = $(this).data('color') || (!$box.hasClass('infobox-dark') ? $box.css('color') : 'rgba(255,255,255,0.95)');
             var trackColor = barColor == 'rgba(255,255,255,0.95)' ? 'rgba(255,255,255,0.25)' : '#E2E2E2';
@@ -59,7 +59,7 @@
                     barColor: barColor,
                     chartRangeMin: $(this).data('min') || 0
                 });
-        });
+        });*@
 
         $('#timepicker1').timepicker({
             minuteStep: 1,
@@ -78,7 +78,7 @@
        
         //flot chart resize plugin, somehow manipulates default browser resize event to optimize it!
         //but sometimes it brings up errors with normal resize event handlers
-        $.resize.throttleWindow = false;
+        @*$.resize.throttleWindow = false;
 
         var placeholder = $('#piechart-placeholder').css({ 'width': '90%', 'min-height': '150px' });
         var data = [
@@ -259,7 +259,7 @@
             if (offset.top > $w.scrollTop() + $w.innerHeight() - 100)
                 $(this).addClass('dropup');
             else $(this).removeClass('dropup');
-        });
+        });*@
 
     })
 </script>

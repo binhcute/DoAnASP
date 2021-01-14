@@ -7,150 +7,157 @@
 
 
 
-        
 
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="title_left">
-                    <div class="col-md-5 col-sm-5">
-                        <a asp-action="Create" class="btn btn-success text-white">Thêm Giày Mới</a>
-                        @*<a onclick="showModal('@Url.Action("Create","Producer",null,Context.Request.Scheme)','Thêm Thông Tin Nhà Cung Cấp')" class="btn btn-success text-white">
-                    Thêm Thông Tin Nhà Cung Cấp
-                </a>*@
-                    </div>
-                </div>
-                <div class="title_right">
-                    <div class="col-md-5 col-sm-5 pull-right top_search">
-                        <input type="text" placeholder="Search..." class="form-control" id="keyword" />
-                        <a class="btn btn-default" id="chon"><i class="fa fa-search"></i></a>
-                    </div>
-                </div>
-                <table id="simple-table" class="table  table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th class="center">
-                                <label class="pos-rel">
-                                    <input type="checkbox" class="ace" />
-                                    <span class="lbl"></span>
-                                </label>
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Name)
-                            </th>
-                            <th class="hidden-480">
-                                @Html.DisplayNameFor(model => model.Img)
-                            </th>
-                            <th class="hidden-480">
-                                @Html.DisplayNameFor(model => model.Description)
-                            </th>
-                            <th class="hidden-480">
-                                @Html.DisplayNameFor(model => model.Price)
-                            </th>
-                            <th class="hidden-480">
-                                @Html.DisplayNameFor(model => model.Status)
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
 
-                    <tbody id="ketqua">
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td class="center">
-                                    <label class="pos-rel">
-                                        <input type="checkbox" class="ace" />
-                                        <span class="lbl"></span>
-                                    </label>
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td class="hidden-480">
-                                    <img class="img-thumbnail" src="~/admin/assets/images/image/@Html.DisplayFor(modelItem => item.Img)" alt="Alternate Text" />
+<div class="row">
+    <div class="col-xs-12">
+        <div class="title_left">
+            <div class="col-md-5 col-sm-5">
+                <a asp-action="Create" class="btn btn-success text-white">Thêm Giày Mới</a>
+                @*<a onclick="showModal('@Url.Action("Create","Producer",null,Context.Request.Scheme)','Thêm Thông Tin Nhà Cung Cấp')" class="btn btn-success text-white">
+                        Thêm Thông Tin Nhà Cung Cấp
+                    </a>*@
+            </div>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 pull-right top_search">
+                <input type="text" placeholder="Search..." class="form-control" id="keyword" />
+                <a class="btn btn-default" id="chon"><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+        <table id="simple-table" class="table  table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="center">
+                        <label class="pos-rel">
+                            <input type="checkbox" class="ace" />
+                            <span class="lbl"></span>
+                        </label>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th class="hidden-480" style="width:500px">
+                        @Html.DisplayNameFor(model => model.Img)
+                    </th>
+                    <th class="hidden-480">
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th class="hidden-480">
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th class="hidden-480">
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
 
-                                </td>
-                                <td class="hidden-480">
-                                    @Html.DisplayFor(modelItem => item.Description)
-                                </td>
-                                <td class="hidden-480">
-                                    @Html.DisplayFor(modelItem => item.Price)
-                                </td>
-                                <td class="hidden-480">
-                                    @Html.DisplayFor(modelItem => item.Status)
-                                </td>
-                                <td>
+            <tbody id="ketqua">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="center">
+                            <label class="pos-rel">
+                                <input type="checkbox" class="ace" />
+                                <span class="lbl"></span>
+                            </label>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="hidden-480">
+                            <img class="img-thumbnail" src="~/admin/assets/images/image/@Html.DisplayFor(modelItem => item.Img)" alt="Alternate Text" />
 
-                                    <a asp-action="Details" asp-route-id="@item.IdShoe" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
-                                        <i class="ace-icon fa fa-folder-open bigger-120"></i>
-                                    </a>
-                                    @*<a onclick="showModal('@Url.Action("Details","Producer",new { id = $"{item.IdPro}" },Context.Request.Scheme)','Chi tiết chất liệu')" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
+                        </td>
+                        <td class="hidden-480">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td class="hidden-480">
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td class="hidden-480">
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+
+                            <a asp-action="Details" asp-route-id="@item.IdShoe" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
                                 <i class="ace-icon fa fa-folder-open bigger-120"></i>
-                            </a>*@
-                                    <a asp-action="Edit" asp-route-id="@item.IdShoe" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
-                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                    </a>
-                                    @*<a onclick="showModal('@Url.Action("Edit","Producer",new { id = $"{item.IdPro}" },Context.Request.Scheme)','Chỉnh sửa thông tin nhà cung cấp')" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
+                            </a>
+                            @*<a onclick="showModal('@Url.Action("Details","Producer",new { id = $"{item.IdPro}" },Context.Request.Scheme)','Chi tiết chất liệu')" class="btn btn-xs btn-success" ata-rel="tooltip" title="Details">
+                                    <i class="ace-icon fa fa-folder-open bigger-120"></i>
+                                </a>*@
+                            <a asp-action="Edit" asp-route-id="@item.IdShoe" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
                                 <i class="ace-icon fa fa-pencil bigger-120"></i>
-                            </a>*@
-                                    <a asp-action="Delete" asp-route-id="@item.IdShoe" class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
-                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                    </a>
-                                    @*<a onclick="showModal('@Url.Action("Delete","Producer",new { id = $"{item.IdPro}" },Context.Request.Scheme)','Xóa thông tin nhà cung cấp')" class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
+                            </a>
+                            @*<a onclick="showModal('@Url.Action("Edit","Producer",new { id = $"{item.IdPro}" },Context.Request.Scheme)','Chỉnh sửa thông tin nhà cung cấp')" class="btn btn-xs btn-info" data-rel="tooltip" title="Edit">
+                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </a>*@
+                            <a asp-action="Delete" asp-route-id="@item.IdShoe" class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
                                 <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                            </a>*@
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-                @section Scripts{
-                    <script>
-                        $(document).ready(function () {
-                            //bat su kien click vao id=chon
-                            $("#chon").click(function () {
-                                $.ajax({
-                                    method: "GET",
-                                    url: "../../api/ShoeModels/GETdata",
-                                    data: { 'keyword': $("keyword").val() }
-                                }).done(function (data) {
-                                    var dataJS = JSON.parse(data);
-                                    console.log(dataJS);
-                                    var i = '';
-                                    $.each(dataJS, function (index, value) {
-                                        var status = '';
-                                        if (value.Status) {
-                                            status = 'checked'
-                                        }
-                                        i += ` <tr>
-                                                                                <td>
-                                                                                    ${value.Name}
-                                                                                </td>
-                                                                                <td>
-                                                                                    <img class="img-thumbnail" src="~/admin/assets/images/image/${value.Img}"/>
-                                                                                </td>
-                                                                                <td>
-                                                                                    ${value.Description}
-                                                                                </td>
-                                                                                <td>
-                                                                                    ${value.Price}
-                                                                                </td>
-                                                                                <td>
-                                                                                    <input type="checkbox" ${status} disabled>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <a href="/admin/ShoeModel/Edit/`+ value.IdShoe + `" data-toggle="tooltip" title="Edit" class="pd-setting-ed"<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                                <a href="/admin/ShoeModel/Delete/`+ value.IdShoe + `" data-toggle="tooltip" title="Trash" class="pd-setting-ed"<i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                                </td>
-                                                                                </tr>`
-                                    });
-                                    $('#ketqua').html(i);
-                                })
-                            });
-                        });
-                    </script>
+                            </a>
+                            @*<a onclick="showModal('@Url.Action("Delete","Producer",new { id = $"{item.IdPro}" },Context.Request.Scheme)','Xóa thông tin nhà cung cấp')" class="btn btn-xs btn-danger" data-rel="tooltip" title="Delete">
+                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                </a>*@
+                        </td>
+                    </tr>
                 }
-            </div><!-- /.span -->
-        </div><!-- /.row -->
-        <!-- PAGE CONTENT ENDS -->
-  
+            </tbody>
+        </table>
+    </div><!-- /.span -->
+</div><!-- /.row -->
+<!-- PAGE CONTENT ENDS -->
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+           
+            //bat su kien click vao id=chon
+            
+            $("#chon").click(function () {
+                
+                $.ajax({
+                    method: "GET",
+                    url: "../../api/ShoeModels/GETdata",
+                    data: { 'keyword': $("#keyword").val() }
+                }).done(function (data) {
+                    
+                    var dataJS = JSON.parse(data);
+                    
+                    var i = ''; 
+                    $.each(dataJS, function (index, value) {
+                        var status = '';
+                        if (value.Status) {
+                            status = 'checked'
+                        }
+                        i += ` <tr>
+                                    <td>
+                                    </td>   
+                                    <td>
+                                        ${value.Name}
+                                    </td>
+                                    <td>
+                                        <img class="img-thumbnail" src="/admin/assets/images/image/${value.Img}"/>
+                                    </td>
+                                    <td>
+                                        ${value.Description}
+                                    </td>
+                                    <td>
+                                        ${value.Price}
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" ${status} disabled>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/ShoeModel/Edit/`+ value.IdShoe + `" data-toggle="tooltip" title="Edit" class="pd-setting-ed"<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    <a href="/admin/ShoeModel/Delete/`+ value.IdShoe + `" data-toggle="tooltip" title="Trash" class="pd-setting-ed"<i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                    </td>
+                                    </tr>`
+                    });
+                    
+                    $('#ketqua').html(i);
+                })
+            });
+        });
+    </script>
+}
+
