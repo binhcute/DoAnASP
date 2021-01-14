@@ -17,9 +17,9 @@ namespace DoAnGiay.Areas.Admin.Data
         public DbSet<AccountModel> Account { get; set; }
         public DbSet<AdminModel> Admin { get; set; }
         public DbSet<UserModel> User { get; set; }
-        public DbSet<RolesModel> Roles { get; set; }
         public DbSet<ShoeModel> Shoe { get; set; }
         public DbSet<TypeShoeModel> TypeShoe { get; set; }
+        public DbSet<SaleModel> Sale { get; set; }
         public DbSet<ColorModel> Color { get; set; }
         public DbSet<SizeModel> Size { get; set; }
         public DbSet<ProducerModel> Producer { get; set; }

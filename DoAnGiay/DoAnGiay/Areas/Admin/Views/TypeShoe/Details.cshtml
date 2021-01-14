@@ -19,7 +19,13 @@
                     <span> @Html.DisplayFor(model => model.Name)</span>
                 </div>
             </div>
+            <div class="profile-info-row">
+                <div class="profile-info-name"> @Html.DisplayNameFor(model => model.Description) </div>
 
+                <div class="profile-info-value">
+                    <span>@Html.DisplayFor(model => model.Description)</span>
+                </div>
+            </div>
             <div class="profile-info-row">
                 <div class="profile-info-name"> @Html.DisplayNameFor(model => model.Status) </div>
 

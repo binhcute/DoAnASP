@@ -23,8 +23,9 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdRoles" class="control-label"></label>
-                <select asp-for="IdRoles" class ="form-control" asp-items="ViewBag.IdRoles"></select>
+                <label asp-for="Rule" class="control-label"></label>
+                <input asp-for="Rule" class="form-control" />
+                <span asp-validation-for="Rule" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <div class="checkbox">

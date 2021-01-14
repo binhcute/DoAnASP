@@ -9172,11 +9172,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DoAnHK5\\ASP.NetCore\\DoAnAsp\\DoAnGiay\\DoAnGiay\\DoAnGiay.csproj",
+      "projectUniqueName": "D:\\DoAnHK5\\ASP.NetCore\\DoAnASP\\DoAnGiay\\DoAnGiay\\DoAnGiay.csproj",
       "projectName": "DoAnGiay",
-      "projectPath": "D:\\DoAnHK5\\ASP.NetCore\\DoAnAsp\\DoAnGiay\\DoAnGiay\\DoAnGiay.csproj",
+      "projectPath": "D:\\DoAnHK5\\ASP.NetCore\\DoAnASP\\DoAnGiay\\DoAnGiay\\DoAnGiay.csproj",
       "packagesPath": "C:\\Users\\Rapper B-Eight\\.nuget\\packages\\",
-      "outputPath": "D:\\DoAnHK5\\ASP.NetCore\\DoAnAsp\\DoAnGiay\\DoAnGiay\\obj\\",
+      "outputPath": "D:\\DoAnHK5\\ASP.NetCore\\DoAnASP\\DoAnGiay\\DoAnGiay\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

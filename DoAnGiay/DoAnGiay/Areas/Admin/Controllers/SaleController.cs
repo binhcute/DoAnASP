@@ -11,22 +11,22 @@ using DoAnGiay.Areas.Admin.Models;
 namespace DoAnGiay.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class RolesController : Controller
+    public class SaleController : Controller
     {
         private readonly DPContext _context;
 
-        public RolesController(DPContext context)
+        public SaleController(DPContext context)
         {
             _context = context;
         }
 
-        // GET: Admin/Roles
+        // GET: Admin/Sale
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Roles.ToListAsync());
+            return View(await _context.Sale.ToListAsync());
         }
 
-        // GET: Admin/Roles/Details/5
+        // GET: Admin/Sale/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,39 +34,39 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var rolesModel = await _context.Roles
-                .FirstOrDefaultAsync(m => m.IdRoles == id);
-            if (rolesModel == null)
+            var saleModel = await _context.Sale
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (saleModel == null)
             {
                 return NotFound();
             }
 
-            return View(rolesModel);
+            return View(saleModel);
         }
 
-        // GET: Admin/Roles/Create
+        // GET: Admin/Sale/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Roles/Create
+        // POST: Admin/Sale/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdRoles,Name")] RolesModel rolesModel)
+        public async Task<IActionResult> Create([Bind("Id,Name,PriceSale,Description,Date")] SaleModel saleModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(rolesModel);
+                _context.Add(saleModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(rolesModel);
+            return View(saleModel);
         }
 
-        // GET: Admin/Roles/Edit/5
+        // GET: Admin/Sale/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,22 +74,22 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var rolesModel = await _context.Roles.FindAsync(id);
-            if (rolesModel == null)
+            var saleModel = await _context.Sale.FindAsync(id);
+            if (saleModel == null)
             {
                 return NotFound();
             }
-            return View(rolesModel);
+            return View(saleModel);
         }
 
-        // POST: Admin/Roles/Edit/5
+        // POST: Admin/Sale/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdRoles,Name")] RolesModel rolesModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,PriceSale,Description,Date")] SaleModel saleModel)
         {
-            if (id != rolesModel.IdRoles)
+            if (id != saleModel.Id)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace DoAnGiay.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(rolesModel);
+                    _context.Update(saleModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RolesModelExists(rolesModel.IdRoles))
+                    if (!SaleModelExists(saleModel.Id))
                     {
                         return NotFound();
                     }
@@ -114,10 +114,10 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(rolesModel);
+            return View(saleModel);
         }
 
-        // GET: Admin/Roles/Delete/5
+        // GET: Admin/Sale/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,30 +125,30 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var rolesModel = await _context.Roles
-                .FirstOrDefaultAsync(m => m.IdRoles == id);
-            if (rolesModel == null)
+            var saleModel = await _context.Sale
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (saleModel == null)
             {
                 return NotFound();
             }
 
-            return View(rolesModel);
+            return View(saleModel);
         }
 
-        // POST: Admin/Roles/Delete/5
+        // POST: Admin/Sale/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var rolesModel = await _context.Roles.FindAsync(id);
-            _context.Roles.Remove(rolesModel);
+            var saleModel = await _context.Sale.FindAsync(id);
+            _context.Sale.Remove(saleModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RolesModelExists(int id)
+        private bool SaleModelExists(int id)
         {
-            return _context.Roles.Any(e => e.IdRoles == id);
+            return _context.Sale.Any(e => e.Id == id);
         }
     }
 }

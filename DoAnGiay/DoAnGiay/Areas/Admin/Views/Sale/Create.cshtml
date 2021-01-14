@@ -1,0 +1,105 @@
+﻿@model DoAnGiay.Areas.Admin.Models.SaleModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <form asp-action="Create" class="form-horizontal" role="form" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
+                <div class="col-sm-9">
+                    <input asp-for="Name" type="text" id="form-field-1" placeholder="Nhập Tên" class="col-xs-10 col-sm-5" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="space-4"></div>
+
+            <div class="form-group">
+
+                <label asp-for="Date" class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
+                @*<div class="col-sm-9">
+                <input asp-for="Infor" type="text" id="form-field-1" placeholder="Nhập Nội Dung Mô tả" class="col-xs-10 col-sm-5" />
+            </div>*@
+                <div class="col-xs-8 col-sm-9">
+                    @*<div class="input-group">
+
+                    <input asp-for="Date" type="text" id="form-field-1" placeholder="Nhập Nội Dung Mô tả" class="col-xs-10 col-sm-5" />
+                </div>*@
+                    <div class="input-group bootstrap-timepicker">
+                        <input asp-for="Date" id="timepicker1" type="text" class="form-control" />
+                        <span class="input-group-addon">
+                            <i class="fa fa-clock-o bigger-110"></i>
+                        </span>
+                    </div>
+                </div>
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+
+
+
+           
+
+            <div class="space-4"></div>
+            <div class="form-group">
+                <label asp-for="PriceSale" class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
+                <div class="col-sm-9">
+                    <input asp-for="PriceSale" type="text" id="form-field-1" placeholder="Nhập Giá" class="col-xs-10 col-sm-5" />
+                </div>
+                <span asp-validation-for="PriceSale" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="space-4"></div>
+
+
+
+
+            <div class="space-4"></div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
+                <div class="col-sm-9">
+                    <input asp-for="Description" type="text" id="form-field-1" placeholder="Nhập Tên" class="col-xs-10 col-sm-5" />
+                </div>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="space-4"></div>
+
+           
+
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-3 col-md-9">
+                    <button class="btn btn-info" type="submit" value="Create">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+
+                    </button>
+
+                    &nbsp; &nbsp; &nbsp;
+                    <button class="btn" type="reset">
+                        <i class="ace-icon fa fa-undo bigger-110"></i>
+                        Reset
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -13,8 +13,8 @@ namespace DoAnGiay.Areas.Admin.Models
         [Key]
         public int Id { get; set; }
         public int IdOrder { get; set; }
-        public int IdShoe { get; set; }
-        public int Count { get; set; }
+        [ForeignKey("Shoe")]
+        public int Shoes { get; set; }
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18,2)")]
         public decimal SumMoney{get;set;}

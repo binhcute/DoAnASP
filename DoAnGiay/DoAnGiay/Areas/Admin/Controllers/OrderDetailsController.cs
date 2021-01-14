@@ -23,7 +23,8 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // GET: Admin/OrderDetails
         public async Task<IActionResult> Index()
         {
-            return View(await _context.OrderDetail.ToListAsync());
+            var dPContext = _context.OrderDetail.Include(o => o.Shoe);
+            return View(await dPContext.ToListAsync());
         }
 
         // GET: Admin/OrderDetails/Details/5
@@ -35,6 +36,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             }
 
             var orderDetailsModel = await _context.OrderDetail
+                .Include(o => o.Shoe)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (orderDetailsModel == null)
             {
@@ -47,6 +49,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // GET: Admin/OrderDetails/Create
         public IActionResult Create()
         {
+            ViewData["Shoes"] = new SelectList(_context.Shoe, "IdShoe", "Name");
             return View();
         }
 
@@ -55,7 +58,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdOrder,IdShoe,Count,SumMoney,Status")] OrderDetailsModel orderDetailsModel)
+        public async Task<IActionResult> Create([Bind("Id,IdOrder,Shoes,SumMoney,Status")] OrderDetailsModel orderDetailsModel)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +66,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Shoes"] = new SelectList(_context.Shoe, "IdShoe", "Name", orderDetailsModel.Shoes);
             return View(orderDetailsModel);
         }
 
@@ -79,6 +83,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewData["Shoes"] = new SelectList(_context.Shoe, "IdShoe", "Name", orderDetailsModel.Shoes);
             return View(orderDetailsModel);
         }
 
@@ -87,7 +92,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdOrder,IdShoe,Count,SumMoney,Status")] OrderDetailsModel orderDetailsModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdOrder,Shoes,SumMoney,Status")] OrderDetailsModel orderDetailsModel)
         {
             if (id != orderDetailsModel.Id)
             {
@@ -114,6 +119,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Shoes"] = new SelectList(_context.Shoe, "IdShoe", "Name", orderDetailsModel.Shoes);
             return View(orderDetailsModel);
         }
 
@@ -126,6 +132,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             }
 
             var orderDetailsModel = await _context.OrderDetail
+                .Include(o => o.Shoe)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (orderDetailsModel == null)
             {

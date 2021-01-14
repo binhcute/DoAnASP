@@ -55,7 +55,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdPro,Name,Infor")] ProducerModel producerModel)
+        public async Task<IActionResult> Create([Bind("IdPro,Name,Description,Date")] ProducerModel producerModel)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdPro,Name,Infor")] ProducerModel producerModel)
+        public async Task<IActionResult> Edit(int id, [Bind("IdPro,Name,Description,Date")] ProducerModel producerModel)
         {
             if (id != producerModel.IdPro)
             {

@@ -21,29 +21,21 @@ namespace DoAnGiay.Migrations
 
             modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.AccountModel", b =>
                 {
-                    b.Property<int>("IdAccount")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<string>("AccountName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
-
-                    b.Property<int>("IdRoles")
-                        .HasColumnType("int");
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
+                    b.Property<int>("Rule")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("IdAccount");
-
-                    b.HasIndex("IdRoles");
+                    b.HasKey("AccountName");
 
                     b.ToTable("Account");
                 });
@@ -60,17 +52,13 @@ namespace DoAnGiay.Migrations
                         .HasColumnType("nvarchar(300)")
                         .HasMaxLength(300);
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(300)")
-                        .HasMaxLength(300);
-
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<int>("IdAccount")
-                        .HasColumnType("int");
+                    b.Property<string>("IdAccount")
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -156,19 +144,13 @@ namespace DoAnGiay.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
                     b.Property<int>("IdOrder")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdShoe")
                         .HasColumnType("int");
 
                     b.Property<int?>("OrderIdOrder")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ShoeIdShoe")
+                    b.Property<int>("Shoes")
                         .HasColumnType("int");
 
                     b.Property<bool>("Status")
@@ -181,7 +163,7 @@ namespace DoAnGiay.Migrations
 
                     b.HasIndex("OrderIdOrder");
 
-                    b.HasIndex("ShoeIdShoe");
+                    b.HasIndex("Shoes");
 
                     b.ToTable("OrderDetail");
                 });
@@ -193,33 +175,14 @@ namespace DoAnGiay.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(300)")
-                        .HasMaxLength(300);
-
-                    b.Property<string>("Date")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(300)")
-                        .HasMaxLength(300);
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("IdUser")
                         .HasColumnType("int");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
-
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
 
                     b.HasKey("IdOrder");
 
@@ -235,7 +198,10 @@ namespace DoAnGiay.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Infor")
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -248,20 +214,28 @@ namespace DoAnGiay.Migrations
                     b.ToTable("Producer");
                 });
 
-            modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.RolesModel", b =>
+            modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.SaleModel", b =>
                 {
-                    b.Property<int>("IdRoles")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdRoles");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Roles");
+                    b.Property<int>("PriceSale")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sale");
                 });
 
             modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.ShoeModel", b =>
@@ -297,10 +271,13 @@ namespace DoAnGiay.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<int>("Pro")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Sales")
                         .HasColumnType("int");
 
                     b.Property<bool>("Shoelate")
@@ -318,10 +295,6 @@ namespace DoAnGiay.Migrations
                     b.Property<bool>("Version")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Video")
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
-
                     b.HasKey("IdShoe");
 
                     b.HasIndex("Colors");
@@ -329,6 +302,8 @@ namespace DoAnGiay.Migrations
                     b.HasIndex("Materials");
 
                     b.HasIndex("Pro");
+
+                    b.HasIndex("Sales");
 
                     b.HasIndex("Sizes");
 
@@ -358,6 +333,9 @@ namespace DoAnGiay.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -393,8 +371,8 @@ namespace DoAnGiay.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<int>("IdAccount")
-                        .HasColumnType("int");
+                    b.Property<string>("IdAccount")
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -408,22 +386,11 @@ namespace DoAnGiay.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.AccountModel", b =>
-                {
-                    b.HasOne("DoAnGiay.Areas.Admin.Models.RolesModel", "Roles")
-                        .WithMany("Accounts")
-                        .HasForeignKey("IdRoles")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.AdminModel", b =>
                 {
                     b.HasOne("DoAnGiay.Areas.Admin.Models.AccountModel", "Account")
                         .WithMany("Admins")
-                        .HasForeignKey("IdAccount")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdAccount");
                 });
 
             modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.CommentModel", b =>
@@ -442,8 +409,10 @@ namespace DoAnGiay.Migrations
                         .HasForeignKey("OrderIdOrder");
 
                     b.HasOne("DoAnGiay.Areas.Admin.Models.ShoeModel", "Shoe")
-                        .WithMany()
-                        .HasForeignKey("ShoeIdShoe");
+                        .WithMany("orderDetails")
+                        .HasForeignKey("Shoes")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DoAnGiay.Areas.Admin.Models.OrderModel", b =>
@@ -475,6 +444,12 @@ namespace DoAnGiay.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("DoAnGiay.Areas.Admin.Models.SaleModel", "Sale")
+                        .WithMany("Shoes")
+                        .HasForeignKey("Sales")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("DoAnGiay.Areas.Admin.Models.SizeModel", "Size")
                         .WithMany("Shoes")
                         .HasForeignKey("Sizes")
@@ -492,9 +467,7 @@ namespace DoAnGiay.Migrations
                 {
                     b.HasOne("DoAnGiay.Areas.Admin.Models.AccountModel", "Account")
                         .WithMany("Users")
-                        .HasForeignKey("IdAccount")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdAccount");
                 });
 #pragma warning restore 612, 618
         }

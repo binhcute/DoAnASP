@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DoAnGiay.Areas.Admin.Data;
 using DoAnGiay.Areas.Admin.Models;
-using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace DoAnGiay.Areas.Admin.Controllers
 {
@@ -25,7 +25,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // GET: Admin/Shoe
         public async Task<IActionResult> Index()
         {
-            var dPContext = _context.Shoe.Include(s => s.Color).Include(s => s.Material).Include(s => s.Producer).Include(s => s.Size).Include(s => s.TypeShoe);
+            var dPContext = _context.Shoe.Include(s => s.Color).Include(s => s.Material).Include(s => s.Producer).Include(s => s.Sale).Include(s => s.Size).Include(s => s.TypeShoe);
             return View(await dPContext.ToListAsync());
         }
 
@@ -41,6 +41,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 .Include(s => s.Color)
                 .Include(s => s.Material)
                 .Include(s => s.Producer)
+                .Include(s => s.Sale)
                 .Include(s => s.Size)
                 .Include(s => s.TypeShoe)
                 .FirstOrDefaultAsync(m => m.IdShoe == id);
@@ -58,7 +59,8 @@ namespace DoAnGiay.Areas.Admin.Controllers
             ViewData["Colors"] = new SelectList(_context.Color, "IdColor", "Name");
             ViewData["Materials"] = new SelectList(_context.MaterialModel, "IdMaterial", "Name");
             ViewData["Pro"] = new SelectList(_context.Producer, "IdPro", "Name");
-            ViewData["Sizes"] = new SelectList(_context.Size, "IdSize", "IdSize");
+            ViewData["Sales"] = new SelectList(_context.Sale, "Id", "Name");
+            ViewData["Sizes"] = new SelectList(_context.Size, "IdSize", "NumSize");
             ViewData["Type"] = new SelectList(_context.TypeShoe, "IdType", "Name");
             return View();
         }
@@ -68,10 +70,11 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdShoe,Name,Date,Img,Price,Sizes,Colors,Video,NumberSeri,Shoelate,Version,Materials,Type,Pro,Description,Status")] ShoeModel shoeModel, IFormFile imageUpload)
+        public async Task<IActionResult> Create([Bind("IdShoe,Name,Date,Img,Price,Sizes,Colors,NumberSeri,Shoelate,Version,Materials,Sales,Type,Pro,Description,Status")] ShoeModel shoeModel, IFormFile imageUpload)
         {
             if (ModelState.IsValid)
             {
+
                 shoeModel.Img = "avatar.png";
                 _context.Add(shoeModel);
                 await _context.SaveChangesAsync();
@@ -96,11 +99,10 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-        
-
             ViewData["Colors"] = new SelectList(_context.Color, "IdColor", "Name", shoeModel.Colors);
             ViewData["Materials"] = new SelectList(_context.MaterialModel, "IdMaterial", "Name", shoeModel.Materials);
             ViewData["Pro"] = new SelectList(_context.Producer, "IdPro", "Name", shoeModel.Pro);
+            ViewData["Sales"] = new SelectList(_context.Sale, "Id", "Id", shoeModel.Sales);
             ViewData["Sizes"] = new SelectList(_context.Size, "IdSize", "IdSize", shoeModel.Sizes);
             ViewData["Type"] = new SelectList(_context.TypeShoe, "IdType", "Name", shoeModel.Type);
             return View(shoeModel);
@@ -122,7 +124,8 @@ namespace DoAnGiay.Areas.Admin.Controllers
             ViewData["Colors"] = new SelectList(_context.Color, "IdColor", "Name", shoeModel.Colors);
             ViewData["Materials"] = new SelectList(_context.MaterialModel, "IdMaterial", "Name", shoeModel.Materials);
             ViewData["Pro"] = new SelectList(_context.Producer, "IdPro", "Name", shoeModel.Pro);
-            ViewData["Sizes"] = new SelectList(_context.Size, "IdSize", "IdSize", shoeModel.Sizes);
+            ViewData["Sales"] = new SelectList(_context.Sale, "Id", "Name", shoeModel.Sales);
+            ViewData["Sizes"] = new SelectList(_context.Size, "IdSize", "NumSize", shoeModel.Sizes);
             ViewData["Type"] = new SelectList(_context.TypeShoe, "IdType", "Name", shoeModel.Type);
             return View(shoeModel);
         }
@@ -132,7 +135,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdShoe,Name,Date,Img,Price,Sizes,Colors,Video,NumberSeri,Shoelate,Version,Materials,Type,Pro,Description,Status")] ShoeModel shoeModel, IFormFile imageUpload)
+        public async Task<IActionResult> Edit(int id, [Bind("IdShoe,Name,Date,Img,Price,Sizes,Colors,NumberSeri,Shoelate,Version,Materials,Sales,Type,Pro,Description,Status")] ShoeModel shoeModel, IFormFile imageUpload)
         {
             if (id != shoeModel.IdShoe)
             {
@@ -153,12 +156,12 @@ namespace DoAnGiay.Areas.Admin.Controllers
                         path = Path.Combine(
                             Directory.GetCurrentDirectory(), "wwwroot/admin/assets/images/image",
                         shoeModel.IdShoe + "." + imageUpload.FileName.Split(".")[imageUpload.FileName.Split(".").Length - 1]);
-                        
+
                         using (var stream = new FileStream(path, FileMode.Create))
                         {
                             await imageUpload.CopyToAsync(stream);
                         }
-                        
+
                         shoeModel.Img = shoeModel.IdShoe + "." + imageUpload.FileName.Split(".")[imageUpload.FileName.Split(".").Length - 1];
                         _context.Update(shoeModel);
                         await _context.SaveChangesAsync();
@@ -181,7 +184,8 @@ namespace DoAnGiay.Areas.Admin.Controllers
             ViewData["Colors"] = new SelectList(_context.Color, "IdColor", "Name", shoeModel.Colors);
             ViewData["Materials"] = new SelectList(_context.MaterialModel, "IdMaterial", "Name", shoeModel.Materials);
             ViewData["Pro"] = new SelectList(_context.Producer, "IdPro", "Name", shoeModel.Pro);
-            ViewData["Sizes"] = new SelectList(_context.Size, "IdSize", "IdSize", shoeModel.Sizes);
+            ViewData["Sales"] = new SelectList(_context.Sale, "Id", "Name", shoeModel.Sales);
+            ViewData["Sizes"] = new SelectList(_context.Size, "IdSize", "NumSize", shoeModel.Sizes);
             ViewData["Type"] = new SelectList(_context.TypeShoe, "IdType", "Name", shoeModel.Type);
             return View(shoeModel);
         }
@@ -198,6 +202,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 .Include(s => s.Color)
                 .Include(s => s.Material)
                 .Include(s => s.Producer)
+                .Include(s => s.Sale)
                 .Include(s => s.Size)
                 .Include(s => s.TypeShoe)
                 .FirstOrDefaultAsync(m => m.IdShoe == id);

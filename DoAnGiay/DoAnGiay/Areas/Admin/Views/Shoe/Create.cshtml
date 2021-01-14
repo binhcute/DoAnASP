@@ -16,34 +16,19 @@
                 </div>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-
-
-
             <div class="space-4"></div>
-
             <div class="form-group">
-                
                 <label asp-for="Date" class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
-                @*<div class="col-sm-9">
-                <input asp-for="Infor" type="text" id="form-field-1" placeholder="Nhập Nội Dung Mô tả" class="col-xs-10 col-sm-5" />
-            </div>*@
-            <div class="col-xs-8 col-sm-9">
-                @*<div class="input-group">
-
-            <input asp-for="Date" type="text" id="form-field-1" placeholder="Nhập Nội Dung Mô tả" class="col-xs-10 col-sm-5" />
-        </div>*@
-                <div class="input-group bootstrap-timepicker">
-                    <input asp-for="Date" id="timepicker1" type="text" class="form-control" />
-                    <span class="input-group-addon">
-                        <i class="fa fa-clock-o bigger-110"></i>
-                    </span>
+                <div class="col-xs-8 col-sm-9">
+                    <div class="input-group bootstrap-timepicker">
+                        <input asp-for="Date" id="timepicker1" type="text" class="form-control" />
+                        <span class="input-group-addon">
+                            <i class="fa fa-clock-o bigger-110"></i>
+                        </span>
+                    </div>
                 </div>
-            </div>
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
-
-            
-
             <div class="space-4"></div>
 
             <div class="form-group">
@@ -53,12 +38,7 @@
                 </div>
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
-
-
-
             <div class="space-4"></div>
-
-
             <div class="form-group">
                 <label asp-for="Img" class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
                 <div class="col-sm-9">
@@ -69,10 +49,10 @@
                     </div>
                 </div>
                 <span asp-validation-for="Img" class="text-danger"></span>
-            <div class="form-group">
-                <img src="~/admin/assets/images/avatars/avatar.png" class="img-thumbnail" id="previewImage" alt="Alternate Text" />
-            </div>
+                <div class="form-group">
+                    <img src="~/admin/assets/images/avatars/avatar.png" class="img-thumbnail" id="previewImage" alt="Alternate Text" />
                 </div>
+            </div>
             <div class="form-group">
                 <label asp-for="Sizes" class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
                 <div class="col-sm-9">
@@ -83,7 +63,16 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <label asp-for="Sales" class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
+                <div class="col-sm-9">
+                    <div class="custom-file">
 
+                        <select asp-for="Sales" class="chosen-select form-control" id="form-field-select-3" data-placeholder="Choose a State..." asp-items="ViewBag.Sales">
+                        </select>
+                    </div>
+                </div>
+            </div>
             <div class="space-4"></div>
 
             <div class="form-group">
@@ -136,15 +125,7 @@
                 </div>
             </div>
 
-            <div class="space-4"></div>
-
-            <div class="form-group">
-                <label asp-for="Video" class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
-                <div class="col-sm-9">
-                    <input asp-for="Video" type="text" id="form-field-1" placeholder="Nhập Tên" class="col-xs-10 col-sm-5" />
-                </div>
-                <span asp-validation-for="Video" class="text-danger"></span>
-            </div>
+            
 
 
 
