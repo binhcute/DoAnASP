@@ -32,7 +32,7 @@ namespace DoAnGiay.Areas.Admin.Models
         [StringLength(maximumLength: 10, ErrorMessage = "Độ dài không phù hợp", MinimumLength = 10)]
         public string Phone { get; set; }
         [ForeignKey("Account")]
-        public int IdAccount { get; set; }
+        public string IdAccount { get; set; }
         public virtual AccountModel Account { get; set; }
         public ICollection<OrderModel> Orders { get; set; }
     }

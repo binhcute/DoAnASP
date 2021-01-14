@@ -49,7 +49,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // GET: Admin/User/Create
         public IActionResult Create()
         {
-            ViewData["IdAccount"] = new SelectList(_context.Account, "IdAccount", "AccountName");
+            ViewData["IdAccount"] = new SelectList(_context.Account, "AccountName", "AccountName");
             return View();
         }
 
@@ -66,7 +66,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAccount"] = new SelectList(_context.Account, "IdAccount", "AccountName", userModel.IdAccount);
+            ViewData["IdAccount"] = new SelectList(_context.Account, "AccountName", "AccountName", userModel.IdAccount);
             return View(userModel);
         }
 
@@ -83,7 +83,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdAccount"] = new SelectList(_context.Account, "IdAccount", "AccountName", userModel.IdAccount);
+            ViewData["IdAccount"] = new SelectList(_context.Account, "AccountName", "AccountName", userModel.IdAccount);
             return View(userModel);
         }
 
@@ -119,7 +119,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAccount"] = new SelectList(_context.Account, "IdAccount", "AccountName", userModel.IdAccount);
+            ViewData["IdAccount"] = new SelectList(_context.Account, "AccountName", "AccountName", userModel.IdAccount);
             return View(userModel);
         }
 

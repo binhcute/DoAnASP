@@ -14,6 +14,7 @@ namespace DoAnGiay.Areas.Admin.Models
         [StringLength(50, MinimumLength = 3)]
         [Required]
         public string Name { get; set; }
+        public string Description { get; set; }
         public bool Status { get; set; }
         public ICollection<ShoeModel> Shoes { get; set; }
     }

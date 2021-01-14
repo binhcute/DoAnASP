@@ -58,7 +58,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdOrder,IdUser,UserName,Email,Address,Phone,Date,Status")] OrderModel orderModel)
+        public async Task<IActionResult> Create([Bind("IdOrder,IdUser,Date,Status")] OrderModel orderModel)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdOrder,IdUser,UserName,Email,Address,Phone,Date,Status")] OrderModel orderModel)
+        public async Task<IActionResult> Edit(int id, [Bind("IdOrder,IdUser,Date,Status")] OrderModel orderModel)
         {
             if (id != orderModel.IdOrder)
             {

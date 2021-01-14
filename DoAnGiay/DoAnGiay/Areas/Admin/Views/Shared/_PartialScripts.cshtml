@@ -75,8 +75,7 @@
         }).next().on(ace.click_event, function () {
             $(this).prev().focus();
         });
-
-
+       
         //flot chart resize plugin, somehow manipulates default browser resize event to optimize it!
         //but sometimes it brings up errors with normal resize event handlers
         $.resize.throttleWindow = false;

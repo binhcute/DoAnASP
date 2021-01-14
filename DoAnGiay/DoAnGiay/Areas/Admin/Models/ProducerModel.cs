@@ -16,7 +16,10 @@ namespace DoAnGiay.Areas.Admin.Models
         [Required]
         [Column(TypeName = "nvarchar(100)")]
         public string Name { get; set; }
-        public string Infor { get; set; }
+        public string Description { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Date { get; set; }
         public ICollection<ShoeModel> Shoes { get; set; }
     }
 }

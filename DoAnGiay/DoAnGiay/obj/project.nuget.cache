@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k7vFd6waYocYRFXtemWciDflC89pz7FOyoduICkrKz9tpPbixV3WfuEXwmLX4uDqnB83R/USfqj+QKUZsFF0gQ==",
+  "dgSpecHash": "fWYnnwn6UmV8NvITqvUWrHeLbSWVTXUyK8dybt8SnnMTYH1Vr6PfCMCvL6r+23edw2HTkG7m6OkDNYf6GXFJSA==",
   "success": true,
-  "projectFilePath": "D:\\DoAnHK5\\ASP.NetCore\\DoAnAsp\\DoAnGiay\\DoAnGiay\\DoAnGiay.csproj",
+  "projectFilePath": "D:\\DoAnHK5\\ASP.NetCore\\DoAnASP\\DoAnGiay\\DoAnGiay\\DoAnGiay.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rapper B-Eight\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\Rapper B-Eight\\.nuget\\packages\\castle.windsor\\5.1.1\\castle.windsor.5.1.1.nupkg.sha512",

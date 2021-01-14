@@ -10,8 +10,6 @@ namespace DoAnGiay.Areas.Admin.Models
     public class AccountModel
     {
         [Key]
-        public int IdAccount { get; set; }
-
         [Required(ErrorMessage = "Nhập Đầy Đủ Thông Tin")]
         [StringLength(maximumLength: 200, ErrorMessage = "Độ dài không phù hợp", MinimumLength = 8)]
         [Display(Name = "Tên tài khoản")]
@@ -21,11 +19,10 @@ namespace DoAnGiay.Areas.Admin.Models
         [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
-        [ForeignKey("Roles")]
-        public int IdRoles { get; set; }
+        public int Rule { get; set; }
         
         public bool Status { get; set; }
-        public virtual RolesModel Roles { get; set; }
+        
         public ICollection<AdminModel> Admins { get; set; }
         public ICollection<UserModel> Users { get; set; }
 

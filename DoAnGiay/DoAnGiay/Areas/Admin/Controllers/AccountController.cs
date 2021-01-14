@@ -23,12 +23,11 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // GET: Admin/Account
         public async Task<IActionResult> Index()
         {
-            var dPContext = _context.Account.Include(a => a.Roles);
-            return View(await dPContext.ToListAsync());
+            return View(await _context.Account.ToListAsync());
         }
 
         // GET: Admin/Account/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -36,8 +35,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             }
 
             var accountModel = await _context.Account
-                .Include(a => a.Roles)
-                .FirstOrDefaultAsync(m => m.IdAccount == id);
+                .FirstOrDefaultAsync(m => m.AccountName == id);
             if (accountModel == null)
             {
                 return NotFound();
@@ -49,7 +47,6 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // GET: Admin/Account/Create
         public IActionResult Create()
         {
-            ViewData["IdRoles"] = new SelectList(_context.Roles, "IdRoles", "Name");
             return View();
         }
 
@@ -58,7 +55,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdAccount,AccountName,Password,IdRoles,Status")] AccountModel accountModel)
+        public async Task<IActionResult> Create([Bind("AccountName,Password,Rule,Status")] AccountModel accountModel)
         {
             if (ModelState.IsValid)
             {
@@ -66,12 +63,11 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdRoles"] = new SelectList(_context.Roles, "IdRoles", "Name", accountModel.IdRoles);
             return View(accountModel);
         }
 
         // GET: Admin/Account/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -83,7 +79,6 @@ namespace DoAnGiay.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdRoles"] = new SelectList(_context.Roles, "IdRoles", "Name", accountModel.IdRoles);
             return View(accountModel);
         }
 
@@ -92,9 +87,9 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdAccount,AccountName,Password,IdRoles,Status")] AccountModel accountModel)
+        public async Task<IActionResult> Edit(string id, [Bind("AccountName,Password,Rule,Status")] AccountModel accountModel)
         {
-            if (id != accountModel.IdAccount)
+            if (id != accountModel.AccountName)
             {
                 return NotFound();
             }
@@ -108,7 +103,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AccountModelExists(accountModel.IdAccount))
+                    if (!AccountModelExists(accountModel.AccountName))
                     {
                         return NotFound();
                     }
@@ -119,12 +114,11 @@ namespace DoAnGiay.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdRoles"] = new SelectList(_context.Roles, "IdRoles", "Name", accountModel.IdRoles);
             return View(accountModel);
         }
 
         // GET: Admin/Account/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -132,8 +126,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
             }
 
             var accountModel = await _context.Account
-                .Include(a => a.Roles)
-                .FirstOrDefaultAsync(m => m.IdAccount == id);
+                .FirstOrDefaultAsync(m => m.AccountName == id);
             if (accountModel == null)
             {
                 return NotFound();
@@ -145,7 +138,7 @@ namespace DoAnGiay.Areas.Admin.Controllers
         // POST: Admin/Account/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var accountModel = await _context.Account.FindAsync(id);
             _context.Account.Remove(accountModel);
@@ -153,9 +146,9 @@ namespace DoAnGiay.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AccountModelExists(int id)
+        private bool AccountModelExists(string id)
         {
-            return _context.Account.Any(e => e.IdAccount == id);
+            return _context.Account.Any(e => e.AccountName == id);
         }
     }
 }
