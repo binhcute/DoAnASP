@@ -1,5 +1,7 @@
-﻿using DoAnGiay.Models;
+﻿using DoAnGiay.Areas.Admin.Data;
+using DoAnGiay.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,17 +13,19 @@ namespace DoAnGiay.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly DPContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(DPContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+
+            return View(await _context.TypeShoe.ToListAsync());
         }
+
 
         public IActionResult Privacy()
         {
