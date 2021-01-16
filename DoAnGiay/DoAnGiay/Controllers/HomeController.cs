@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using DoAnGiay.Areas.Admin.Models;
 
 namespace DoAnGiay.Controllers
 {
@@ -22,7 +23,7 @@ namespace DoAnGiay.Controllers
 
         public async Task<IActionResult> Index()
         {
-
+            
             return View(await _context.TypeShoe.ToListAsync());
         }
 

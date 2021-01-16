@@ -506,3 +506,8 @@ D:\DoAnHK5\ASP.NetCore\DoAnASP\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\A
 D:\DoAnHK5\ASP.NetCore\DoAnASP\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shoe\Details.cshtml.g.cs
 D:\DoAnHK5\ASP.NetCore\DoAnASP\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shoe\Edit.cshtml.g.cs
 D:\DoAnHK5\ASP.NetCore\DoAnASP\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shoe\Index.cshtml.g.cs
+D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Views\TypeShoe\Create.cshtml.g.cs
+D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Views\TypeShoe\Delete.cshtml.g.cs
+D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Views\TypeShoe\Details.cshtml.g.cs
+D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Views\TypeShoe\Edit.cshtml.g.cs
+D:\DoAnHK5\ASP.NetCore\DoAnAsp\DoAnGiay\DoAnGiay\obj\Debug\netcoreapp3.1\Razor\Views\TypeShoe\Index.cshtml.g.cs

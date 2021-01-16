@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Giay\**" />
+    <Compile Remove="Views\LoaiGiay\**" />
+    <Content Remove="Views\Giay\**" />
+    <Content Remove="Views\LoaiGiay\**" />
+    <EmbeddedResource Remove="Views\Giay\**" />
+    <EmbeddedResource Remove="Views\LoaiGiay\**" />
+    <None Remove="Views\Giay\**" />
+    <None Remove="Views\LoaiGiay\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Castle.Windsor" Version="5.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />
